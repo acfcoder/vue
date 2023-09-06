@@ -33,3 +33,4 @@ Durante el Curso de Vue 3 aprenderás qué es Vue, cómo funciona Vue y cuáles 
 Para aprovechar el Curso de Vue 3 es necesario que tengas unos mínimos [conocimientos de HTML, CSS y JavaScript](/como-aprender-vue/).
 
 **Este es el mejor momento para aprender Vue 3**, así que te espero en la primera lección.
+# vue
