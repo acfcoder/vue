@@ -3,7 +3,14 @@ const API = "https://api.github.com/users/";
 const app = Vue.createApp ({
     data() {
         return {
-            message: "Hello, vue"
+            message: "Hello, Vue"
+        }
+    },
+    methods: {
+        async doSearch() {
+            const response = await fetch(API + "acfcoder")
+            const data = await response.json()
+            console.log(data)
         }
     }
-}).mount("#app")
+})
