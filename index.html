@@ -19,8 +19,9 @@
         <h1 class="content__title">{{ message }}</h1>
 
         <!-- Search -->
-        <form class="search">
+        <form class="search" @submit.prevent="doSearch">
           <input
+            v-model="search"
             type="text"
             class="search__input"
             required
