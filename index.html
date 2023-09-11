@@ -32,16 +32,23 @@
 
         <!-- Result -->
         <div class="result" v-if="result">
-          <h2 class="result__name">result.name</h2>
-          <img src="#" alt="" class="result__avatar" />
+          <h2 class="result__name">{{ result.name }}</h2>
+          <img
+            :src="result.avatar_url"
+            :alt="result.name"
+            class="result__avatar"
+          />
           <p class="result__bio">
-            result.bio
+            {{ result.bio }}
             <br />
-            <a href="#" class="result__blog">Enlace a web</a>
+            <a v-bind:href="result.blog" target="_blank" class="result__blog"
+              >Enlace a web</a
+            >
           </p>
         </div>
+        <p v-else>Waiting for search...</p>
         <!-- Error -->
-        <div v-if="error" class="result__error">Hay un error</div>
+        <div v-if="error" class="result__error">{{ error }}</div>
       </article>
     </div>
     <script src="js/main.js"></script>
