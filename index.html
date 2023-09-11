@@ -31,13 +31,22 @@
         </form>
 
         <!-- Result -->
+        <div class="result" v-if="result">
+          <h2 class="result__name">result.name</h2>
+          <img src="#" alt="" class="result__avatar" />
+          <p class="result__bio">
+            result.bio
+            <br />
+            <a href="#" class="result__blog">Enlace a web</a>
+          </p>
+        </div>
         <!-- Error -->
-        <div class="result__error"></div>
+        <div v-if="error" class="result__error">Hay un error</div>
       </article>
     </div>
     <script src="js/main.js"></script>
     <script>
-      const mountedApp = app.mount("#app");
+      const mountedApp = app.mount("div#app");
     </script>
   </body>
 </html>
