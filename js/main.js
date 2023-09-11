@@ -41,6 +41,7 @@ const app = Vue.createApp ({
             this.search = null
            }       
         },
+
         addFavorite() {
             this.favorites.set(this.result.id, this.result)
             this.updateStorage()
@@ -48,6 +49,10 @@ const app = Vue.createApp ({
         removeFavorite() {
             this.favorites.delete(this.result.id)
             this.updateStorage()
+        },
+        showFavorite(favorite) {
+            this.result = favorite
+
         },
         updateStorage() {
             window.localStorage.setItem('favorites', JSON.stringify(this.allFavorites))
