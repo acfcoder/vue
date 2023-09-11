@@ -32,7 +32,18 @@
 
         <!-- Result -->
         <div class="result" v-if="result">
-          <a href="#" v-on:click="addFavorite" class="result__toggle-favorite"
+          <a
+            href="#"
+            v-if="isFavorite"
+            v-on:click="removeFavorite"
+            class="result__toggle-favorite"
+            >Remove Favorite ⭐</a
+          >
+          <a
+            href="#"
+            v-else
+            v-on:click="addFavorite"
+            class="result__toggle-favorite"
             >Add Favorite ⭐</a
           >
           <h2 class="result__name">{{ result.name }}</h2>

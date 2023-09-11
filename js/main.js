@@ -28,7 +28,17 @@ const app = Vue.createApp ({
         },
         addFavorite() {
             this.favorites.set(this.result.id, this.result)
-            console.log(this.favorites)
+        },
+        removeFavorite() {
+            this.favorites.delete(this.result.id)
         }
+    },
+    
+    computed: {
+        isFavorite() {
+           return this.favorites.has(this.result.id) 
+        }
+       
     }
+ 
 })
