@@ -10,6 +10,15 @@ const app = Vue.createApp ({
             favorites: new Map()
         };
     },
+    computed: {
+        isFavorite() {
+           return this.favorites.has(this.result.id) 
+        },
+        allFavorites() {
+            return Array.from(this.favorites.values())
+        }
+    },
+
     methods: {
        
         async doSearch() {
@@ -32,13 +41,8 @@ const app = Vue.createApp ({
         removeFavorite() {
             this.favorites.delete(this.result.id)
         }
-    },
-    
-    computed: {
-        isFavorite() {
-           return this.favorites.has(this.result.id) 
-        }
-       
     }
+    
+    
  
 })
