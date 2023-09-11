@@ -12,16 +12,23 @@
   <body>
     <div id="app">
       <!-- Favorites -->
+
       <div class="favorites">
-        <div class="favorite" v-for="favorite in allFavorites">
-          <a @click.prevent="showFavorite(favorite)" href="#">
-            <img
-              :src="favorite.avatar_url"
-              :alt="favorite.name"
-              class="favorite__avatar"
-            />
-          </a>
-        </div>
+        <transition-group name="list">
+          <div
+            class="favorite"
+            v-for="favorite in allFavorites"
+            :key="favorite"
+          >
+            <a @click.prevent="showFavorite(favorite)" href="#">
+              <img
+                :src="favorite.avatar_url"
+                :alt="favorite.name"
+                class="favorite__avatar"
+              />
+            </a>
+          </div>
+        </transition-group>
       </div>
 
       <!-- Content -->
@@ -41,36 +48,38 @@
         </form>
 
         <!-- Result -->
-        <div class="result" v-if="result">
-          <a
-            href="#"
-            v-if="isFavorite"
-            v-on:click="removeFavorite"
-            class="result__toggle-favorite"
-            >Remove Favorite ⭐</a
-          >
-          <a
-            href="#"
-            v-else
-            v-on:click="addFavorite"
-            class="result__toggle-favorite"
-            >Add Favorite ⭐</a
-          >
-          <h2 class="result__name">{{ result.name }}</h2>
-          <img
-            :src="result.avatar_url"
-            :alt="result.name"
-            class="result__avatar"
-          />
-          <p class="result__bio">
-            {{ result.bio }}
-            <br />
-            <a v-bind:href="result.blog" target="_blank" class="result__blog"
-              >Enlace a web</a
+        <Transition>
+          <div class="result" v-if="result">
+            <a
+              href="#"
+              v-if="isFavorite"
+              v-on:click="removeFavorite"
+              class="result__toggle-favorite"
+              >Remove Favorite ⭐</a
             >
-          </p>
-        </div>
-        <p v-else>Waiting for search...</p>
+            <a
+              href="#"
+              v-else
+              v-on:click="addFavorite"
+              class="result__toggle-favorite"
+              >Add Favorite ⭐</a
+            >
+            <h2 class="result__name">{{ result.name }}</h2>
+            <img
+              :src="result.avatar_url"
+              :alt="result.name"
+              class="result__avatar"
+            />
+            <p class="result__bio">
+              {{ result.bio }}
+              <br />
+              <a v-bind:href="result.blog" target="_blank" class="result__blog"
+                >Enlace a web</a
+              >
+            </p>
+          </div>
+          <p v-else>Waiting for search...</p>
+        </Transition>
         <!-- Error -->
         <div v-if="error" class="result__error">{{ error }}</div>
       </article>
