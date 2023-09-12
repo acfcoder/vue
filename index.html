@@ -50,42 +50,20 @@
 
         <!-- Result -->
         <Transition>
-          <div class="result" v-if="result">
-            <a
-              href="#"
-              v-if="isFavorite"
-              v-on:click="removeFavorite"
-              class="result__toggle-favorite"
-              >Remove Favorite ⭐</a
-            >
-            <a
-              href="#"
-              v-else
-              v-on:click="addFavorite"
-              class="result__toggle-favorite"
-              >Add Favorite ⭐</a
-            >
-            <h2 class="result__name">{{ result.name }}</h2>
-            <img
-              :src="result.avatar_url"
-              :alt="result.name"
-              class="result__avatar"
-            />
-            <p class="result__bio">
-              {{ result.bio }}
-              <br />
-              <a v-bind:href="result.blog" target="_blank" class="result__blog"
-                >Enlace a web</a
-              >
-            </p>
-          </div>
-          <p v-else>Waiting for search...</p>
+          <app-profile
+            v-if="result"
+            :result="result"
+            :is-favorite="isFavorite"
+            @add-favorite="addFavorite"
+            @remove-favorite="removeFavorite"
+          />
         </Transition>
         <!-- Error -->
         <div v-if="error" class="result__error">{{ error }}</div>
       </article>
     </div>
     <script src="js/main.js"></script>
+    <script src="js/components/appProfile.js"></script>
     <script>
       const mountedApp = app.mount("div#app");
     </script>
